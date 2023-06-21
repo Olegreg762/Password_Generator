@@ -1,39 +1,43 @@
 // Assignment code here
 
-function number_generator(min, max){
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
-function generatePassword(length, inlcude_upper_case, inlcude_lower_case, inlcude_special_chars, inlcude_numbers){
+
+function generatePassword(){
+  let length = 10;
+  let include_upper_case = true;
+  let include_lower_case = true;
+  let include_special_chars = true;
+  let include_numbers = true;
   let included_chars = "";
-  const all_chars = number_generator(33,127);
-  const upper_case = number_generator(65,90);
-  const lower_case = number_generator(97,122);
-  const special_chars = number_generator(33,64);
-  const numbers = number_generator(48,57);
+  let password = "";
 
-  if (inlcude_upper_case, inlcude_lower_case, inlcude_special_chars, inlcude_numbers){
-    included_chars = all_chars 
+  if(include_upper_case){
+    included_chars += "ABCDEFGHIJKLMNOPQRSTVWXYZ";
   }
 
-  if (inlcude_upper_case){
-    included_chars += upper_case;
+  if(include_lower_case){
+    included_chars += "abcdefghijklmnopqrstuvwxyz";
   }
 
-  if (inlcude_lower_case){
-    included_chars += lower_case;
+  if(include_numbers){
+    included_chars += "1234567890";
   }
 
-  if (inlcude_special_chars){
-    included_chars += special_chars;
+  if(include_special_chars){
+    included_chars += "!@#$%^&*()+=:/?.>,<\_-`~";
   }
 
-  if(inlcude_numbers){
-    included_chars += numbers;
+  for(let i = 0; i < length; i++){
+    password += included_chars[Math.floor(Math.random() * included_chars.length)];
   }
 
+  
 
+  return password 
+  
 }
+
+password = generatePassword();
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
