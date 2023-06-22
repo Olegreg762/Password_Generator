@@ -1,7 +1,10 @@
 // Assignment code here
 
 function sercure_alert(group){
-  let confrimation = confirm("Your Password Will Be Less Secure!\nPress OK to Include " + group +  "\nPress Cancel to Continue With Less Secure Password With\n" + group + " Not Included.");
+  let confrimation = confirm("Your Password Will Be Less Secure!\nPress OK to Include " +
+  group +
+  "\nPress Cancel to Continue With Less Secure Password With\n" + 
+  group + " Not Included.");
     return confrimation
 }
 
