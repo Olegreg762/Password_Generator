@@ -1,7 +1,7 @@
 // Assignment code here
 
-function sercure_alert(){
-  let confrimation = confirm("Your Password Will Be Less Secure!\nPress OK to Include and Cancel to Continue With Less Secure Password");
+function sercure_alert(group){
+  let confrimation = confirm("Your Password Will Be Less Secure!\nPress OK to Include " + group +  "\nPress Cancel to Continue With Less Secure Password With\n" + group + " Not Included.");
     return confrimation
 }
 
@@ -12,32 +12,28 @@ function generatePassword(){
     length = prompt("Please Choose between 8 and 128 characters")
   }
 
-  let include_upper_case = confirm("Would you like to include Upper Case Letters?");
-  if (!include_upper_case) include_upper_case = sercure_alert()
+  let include_upper_case = false
 
-  let include_lower_case = confirm("Would you like to include Lower Case Letters?");
-  if (!include_lower_case) include_lower_case = sercure_alert()
+  let include_lower_case = false
 
-  let include_special_chars = confirm("Would you like Special Characters?");
-  if (!include_special_chars) include_special_chars = sercure_alert()
+  let include_special_chars = false
 
-  let include_numbers = confirm("Do you want Numbers in included?");
-  if (!include_numbers) include_numbers = sercure_alert()
+  let include_numbers = false
 
   while(!include_upper_case && !include_lower_case && !include_special_chars && !include_numbers){
-    alert("You Must Choose At Least One Group To Be Included")
+    alert("You Must Choose At Least One of The Following Groups To Be Included")
 
     include_upper_case = confirm("Would you like to include Upper Case Letters?");
-    if (!include_upper_case) include_upper_case = sercure_alert()
+    if (!include_upper_case) include_upper_case = sercure_alert("Upper Case Letters")
   
     include_lower_case = confirm("Would you like to include Lower Case Letters?");
-    if (!include_lower_case) include_lower_case = sercure_alert()
+    if (!include_lower_case) include_lower_case = sercure_alert("Lower Case Letters")
   
     include_special_chars = confirm("Would you like Special Characters?");
-    if (!include_special_chars) include_special_chars = sercure_alert()
+    if (!include_special_chars) include_special_chars = sercure_alert("Special Characters")
   
     include_numbers = confirm("Do you want Numbers in included?");
-    if (!include_numbers) include_numbers = sercure_alert()
+    if (!include_numbers) include_numbers = sercure_alert("Numbers")
   }
 
   let included_chars = "";
@@ -59,11 +55,13 @@ function generatePassword(){
     included_chars += "!@#$%^&*()+=:/?.>,<\_-`~";
   }
 
-  for(let i = 0; i < length; i++){
-    password += included_chars[Math.floor(Math.random() * included_chars.length)];
-  }
+  const length_array = new Uint32Array(length);
+  crypto.getRandomValues(length_array);
 
-  
+  for(let i = 0; i < length; i++){
+    const included_chars_index = length_array[i] % included_chars.length;
+    password += included_chars[included_chars_index];
+  }
 
   return password 
   
