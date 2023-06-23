@@ -49,12 +49,14 @@ function generatePassword(){
   const length_array = new Uint32Array(length);
   crypto.getRandomValues(length_array);
 
+  let password = "";
+
   for(let i = 0; i < length; i++){
     const included_chars_index = length_array[i] % included_chars.length;
     password += included_chars[included_chars_index];
   }
 
-  let password = "";
+  
 
   if(!include_upper_case && !include_lower_case && !include_special_chars && !include_numbers){
       password=("You Must Choose At Least One of The Groups To Be Included");
