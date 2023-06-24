@@ -68,6 +68,12 @@ header {
   min-height: 100px;
 }
 
+input, textarea #length{
+  max-width: 35px;
+  background-color: hsl(248, 24%, 19%);
+  color: var(--purple) ;
+}
+
 .card-footer {
   text-align: center;
 }
