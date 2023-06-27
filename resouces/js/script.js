@@ -4,10 +4,9 @@
 function confirm_include(group){
   // Looks at HTML doc to determine if checkbox is checked or not 
   let include_confirm = document.getElementById(group).checked;
-  // IF not checked displays warning about password being less secure
-  if (!include_confirm){ include_confirm = confirm("Your Password Will Be Less Secure!\nPress OK to Include " 
-  + group + "!"+
-  "\nPress Cancel to Continue With A Less Secure Password!\n");
+  // IF not checked displays prompt warning about password being less secure
+  if (!include_confirm){ include_confirm = confirm(`Your Password Will Be Less Secure!\nPress OK to Include ${group}!\nPress Cancel to Continue With A Less Secure Password!\n`);
+
   // Forces checkbox to be checked if user decides to include character group
   document.getElementById(group).checked = include_confirm;
 }
@@ -69,7 +68,7 @@ function generatePassword(){
       password=("You Must Choose At Least One of The Groups To Be Included! ");  
     }
   // Displays warning in password box if length not between 8-128 and/or Not a Number
-  if (length == 0)password +=(" Length of Pasword Must Be a Number Between 8 and 128!")
+  if (length == 0)password +=(" Length of Password Must Be a Number Between 8 and 128!")
   //  End of function that returns defined password
   return password; 
   
