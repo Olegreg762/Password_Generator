@@ -6,7 +6,7 @@ I use the method
 [getRandomValues](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues) 
 from the Web API 
 [Crypto](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API)
-to generate cryptographically strong ranadom numbers.<br>
+to generate cryptographically strong random numbers.<br>
 Using this method is more cryptographically secure than
 [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random)
 from the 
